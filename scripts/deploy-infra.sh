@@ -22,7 +22,9 @@ az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
 echo "Creating Communication Service..."
 az communication create --name ${RESOURCE_PREFIX}-contoso-med-acs13 --location "Global" --data-location "United States" \
                         --resource-group $RESOURCE_GROUP_NAME
-ACS_ENDPOINT=https://${RESOURCE_PREFIX}-contoso-med-acs.communication.azure.com
+ACS_ENDPOINT=https://${RESOURCE_PREFIX}-contoso-med-acs13.communication.azure.com
+ACS_CONNECTION_STRING =`az communication list-key --name ${RESOURCE_PREFIX}-contoso-med-acs13 -g $RESOURCE_GROUP_NAME \
+                                                  --query "primaryConnectionString" --output tsv`
 
 # Cosmos DB
 echo "Creating Cosmos Instance..."
