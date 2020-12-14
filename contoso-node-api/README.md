@@ -20,23 +20,7 @@ Starting the backend server requires having
 [NodeJs](https://nodejs.org/en/) installed.
 
 ### Configuration
-Follow the steps below before running the solution
- 
-Fill configuration information in the `config.json` file
-
-```JSON
-{
-    "mongodbConnection":"<COSMOS_DB_OR_MONGODB_CONNECTION_STRING>",
-    "dbName": "<DATABASE_NAME>",
-    "connectionString": "<AZURE_COMMUNICATION_SERVICES_CONNECTION_STRING>",
-    "jwtPrivateKey": "<JWT_PRIVATE_KEY_FOR_AUTHENTICATION>",
-    "endpoint": "<AZURE_COMMUNICATION_SERVICES_ENDPOINT>",
-    "smsLogicAppEndpoint": "<AZURE_COMMUNICATION_SERVICES_SMS_LOGIC_APP_HTTP_TRIGGER_ENDPOINT>",
-    "qnaMakerEndpoint": "<QNA_MAKER_ENDPOINT_URL>",
-    "qnaMakerEndpointKey": "<QNA_MAKER_ENDPOINT_KEY>"
-}
-
-```
+Update the `.env` file in the root of the repository and ensure all values are loaded as environment variables.
 
 ### Initializing new database
 In `app.js`, find following database connection code

@@ -5,7 +5,7 @@ export const constants = {
     KEY_DISPLAY_NAME: "DISPLAY_NAME",
     KEY_SPOOL_ID: "SPOOL_ID",
     KEY_SPOOL_TOKEN: "SPOOL_TOKEN",
-    
-    endpoint: "http://localhost:3001",
-    acsEndpoint: "<ACS_ENDPOINT>"
+
+    endpoint: process.env.REACT_APP_API_ENDPOINT,
+    acsEndpoint: process.env.REACT_APP_ACS_ENDPOINT
 }

@@ -14,8 +14,8 @@ dbClient.connect()
     console.log("connected to the database successfully")
 
     /* uncomment next line to reset database when application
-     * starts. Appointments in db are flushed and regenerated */
-    dbInitializationService.initializeDB();
+     * starts. Appointments in db are flushed and regenerated 
+    dbInitializationService.initializeDB(); */
   })
   .catch((e) => {
     console.log(e)

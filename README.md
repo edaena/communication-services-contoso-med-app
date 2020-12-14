@@ -2,6 +2,9 @@
 
 This is a sample application showing how quickly and easily it is to add the Azure Communication Services to a Telemedicine application using the Azure Communications Javascript SDK and some other Azure services on a react app [Contoso Med App](./contoso-web-app/) with a backend service [ACS Node](./contoso-node-api) built using Node.js and Express.js that helps the client-side application connect to Azure.
 
+## Video 
+https://www.youtube.com/watch?v=8IGqr4tTUBo
+
 ## Application Architecture
 ![Application Architecture](./docs/application-architecture.png)
 

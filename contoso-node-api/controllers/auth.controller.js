@@ -1,6 +1,6 @@
 const bycript = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('../config.json');
+const config = require("../config");
 const userService = require('../services/user.service');
 const { CommunicationIdentityClient } = require('@azure/communication-administration')
 const dbClient = require('../db/index')
@@ -8,9 +8,9 @@ const dbClient = require('../db/index')
 const login = async (req, res) => {
 
     // get email and password from POST body
-    const { email, password } = req.body;    
+    const { email, password } = req.body;
 
-    // find existing user    
+    // find existing user
     var userIdentity = await userService.getUser(email, password)
 
     if (userIdentity !== undefined) {

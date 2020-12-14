@@ -12,7 +12,7 @@ Starting the react app requires two steps. It requires that you have `npm` and
 ```
 npm install -g react react-scripts 
 ```
-Before starting the react app you need to change the configuration in the ` config.js ` file, the endpoint should point to your API service. If you are running locally then use `http://localhost:3001`. 3001 being the default port on which server runs locally.
+Before starting the react app you need to change the configuration in the `.env` file in the root of the repository and ensure all values are loaded as environment variables. If you are running locally then use `http://localhost:3001`. 3001 being the default port on which server runs locally.
 
 After the configuration is done, run
 

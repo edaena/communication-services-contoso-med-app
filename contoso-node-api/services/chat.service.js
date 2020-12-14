@@ -1,7 +1,7 @@
 const ChatClient = require("@azure/communication-chat").ChatClient;
 const CommunicationUserCredential = require("@azure/communication-common").AzureCommunicationUserCredential;
 const axios = require("axios");
-const config = require("../config.json");
+const config = require("../config");
 const userService = require("./user.service");
 const spoolService = require('./spool.service')
 

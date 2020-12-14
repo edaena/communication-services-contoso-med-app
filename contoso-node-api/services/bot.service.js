@@ -2,7 +2,7 @@ const { ChatClient } = require("@azure/communication-chat");
 const { AzureCommunicationUserCredential } = require("@azure/communication-common");
 const { CommunicationIdentityClient } = require('@azure/communication-administration')
 const W3CWebSocket = require('websocket').w3cwebsocket
-const config = require('../config.json')
+const config = require("../config");
 const axios = require("axios").default
 const { fork } = require('child_process')
 

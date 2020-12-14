@@ -1,7 +1,7 @@
 var MongoClient = require("mongodb").MongoClient;
 var assert = require("assert");
 var ObjectId = require("mongodb").ObjectID;
-var conf = require("../config.json");
+const config = require("../config");
 
 const dbClient = require("../db/index");
 const e = require("express");

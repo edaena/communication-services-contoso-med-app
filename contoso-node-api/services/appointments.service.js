@@ -1,4 +1,4 @@
-var conf = require("../config.json");
+const config = require("../config");
 const userService = require('./user.service')
 const spoolService = require('./spool.service')
 

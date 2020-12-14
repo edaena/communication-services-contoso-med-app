@@ -2,7 +2,7 @@ const ChatClient = require("@azure/communication-chat").ChatClient;
 const userService = require('./user.service')
 const dbClient = require("../db/index");
 const { CommunicationIdentityClient } = require("@azure/communication-administration");
-const config = require('../config.json')
+const config = require("../config");
 
 const getSpoolID = async (userEmail, userType) => {
     var user = (userType == 'Doctor' ? await userService.findDoctor(userEmail) : await userService.findUser(userEmail));

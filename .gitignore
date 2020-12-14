@@ -88,3 +88,5 @@ typings/
 # package-lock.json
 package-lock.json
 
+# Deployment artifacts
+contoso-node-api.zip

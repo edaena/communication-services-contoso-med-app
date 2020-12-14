@@ -1,10 +1,8 @@
-const UserTokenClient = require("@azure/communication-configuration").UserTokenClient;
 const appointmentsService = require('../services/appointments.service');
-const config = require("../config.json");
-const configurationClient = new UserTokenClient(config.connectionString);
+const config = require("../config");
 
 if (!config || !config.connectionString || config.connectionString.indexOf('endpoint=') === -1) {
-    throw new Error("Update `config.json` with connection string");
+    throw new Error("Set the 'COSMOS_MONGO_CONNECTION_STRING' environment variable");
 }
 
 const getSlots = async (req, res) => {
