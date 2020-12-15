@@ -4,6 +4,7 @@ Usage:
 	make deploy-infra       deploy the infrastructure for Contoso Med
 	make deploy-app         deploy the frontend app for Contoso Med
 	make deploy-api         deploy the api for Contoso Med
+	make deploy-function    deploy the Azure Function for the Bot assistant
 	make build-app          build the Contoso Med app
 	make start-api          start the Contoso Med API
 	make start-app          start the Contoso Med app
@@ -21,6 +22,9 @@ deploy-app:
 
 deploy-api:
 	bash ./scripts/deploy-api.sh
+
+deploy-function:
+	bash ./scripts/deploy-function.sh
 
 build-app:
 	npm run-script build --prefix contoso-web-app
