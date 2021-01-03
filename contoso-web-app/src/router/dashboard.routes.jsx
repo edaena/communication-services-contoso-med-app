@@ -1,7 +1,6 @@
-import React, { useState,useEffect } from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Switch } from "react-router-dom";
 
-import Header from "../shared/components/header/Header"
 import PatientDashboard from "../pages/dashboard/PatientDashboard";
 
 import DoctorList from "../pages/booking/DoctorList/DoctorList";

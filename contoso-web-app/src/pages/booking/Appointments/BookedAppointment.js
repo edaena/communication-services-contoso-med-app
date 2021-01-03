@@ -11,14 +11,14 @@ import './BookedAppointment.css';
 const BookedAppointment = ({ appointmentsList, getActiveAppointments }) => {
 
     useEffect(() => {
-        if (appointmentsList == undefined) getActiveAppointments();
+        if (!appointmentsList) getActiveAppointments();
     })
 
     const history = useHistory();
 
     return (
         <>
-            {(appointmentsList != undefined && appointmentsList.length != 0) ? (
+            {(appointmentsList && appointmentsList.length !== 0) ? (
                 appointmentsList.map(appointment => (
                     <Card className="doctor-card">
                         <Row>

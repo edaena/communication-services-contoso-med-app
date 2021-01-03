@@ -12,7 +12,7 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
     const [message, setMessage] = useState('')
 
     const chatBubbles = (messages.length > 0) ? messages.map(message => {
-        return (<tr className="chat-bubble" key={message.messageId}>
+        return (<tr className="chat-bubble" key={message.id}>
             <td>
                 <div className={message.sender.communicationUserId === authInfo.spoolID ? "sender-chat-bubble" : "receiver-chat-bubble"}>
                     <div className="message-user-name">{message.sender.communicationUserId === authInfo.spoolID ? "You" : message.senderDisplayName}</div>
@@ -23,7 +23,7 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
                 </div>
             </td>
         </tr>)
-    }) : (<div className='m-5 text-center'>No messages</div>)
+    }) : (<tr><td><div className='m-5 text-center'>No messages</div></td></tr>)
 
     const footerInterface = (
         <div className="chat-area-footer">
@@ -47,7 +47,7 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
                     <div className="chat-area-header-subtitle">{selectedDoctor?.speciality}</div>
                 </div>
                 <div className="chat-area-header-options">
-                    {onCallPlaced != undefined ? (<button className="chat-area-header-call-btn" onClick={() => {onCallPlaced(selectedDoctor);}}>
+                    {onCallPlaced ? (<button className="chat-area-header-call-btn" onClick={() => {onCallPlaced(selectedDoctor);}}>
                         <i className="fas fa-phone-alt"></i>
                     </button>) : ""}
                 </div>
@@ -98,8 +98,8 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
     );
 
     useEffect(() => {
-        if (selectedDoctor != undefined || selectedPatient != undefined) {
-            if (authInfo.userType == 'Doctor') {
+        if (selectedDoctor || selectedPatient) {
+            if (authInfo.userType === 'Doctor') {
                 createThread(selectedPatient.email, authInfo.email)
             }
             else {
@@ -109,10 +109,12 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
     }, [selectedDoctor, selectedPatient])
 
     useEffect(() => {
-        if (messages !== undefined) {
+        if (messages) {
             try {
                 let chatBody = document.getElementsByClassName('chat-area-body')[0]
-                chatBody.scroll(0, chatBody.scrollHeight)
+                if (chatBody) {
+                    chatBody.scroll(0, chatBody.scrollHeight)
+                }
             }
             catch (e) {
                 console.log(e)
@@ -120,7 +122,7 @@ const ChatArea = ({ authInfo, selectedDoctor, selectedPatient, createThread, sen
         }
     }, [messages])
 
-    const selectedInterface = selectedDoctor != undefined ? doctorInterface : (selectedPatient != undefined ? patientInterface : <div className="m-5 text-center">Select user from left</div>);
+    const selectedInterface = selectedDoctor ? doctorInterface : (selectedPatient ? patientInterface : <div className="m-5 text-center">Select user from left</div>);
     return (<>
         {selectedInterface}
     </>);

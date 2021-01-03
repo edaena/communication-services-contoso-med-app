@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Form, FormControl, InputGroup, Container, Row, Col } from 'react-bootstrap';
+import { Button, Form, Container, Row, Col } from 'react-bootstrap';
 
 import { connect } from "react-redux";
 import { loginUser, loginDoctor } from "../../data/actions/auth.actions";
@@ -49,12 +49,12 @@ const Login = ({ loginUser, loginDoctor, authInfo }) => {
                             <div className='container-fluid usertype-toggle-container'>
                                 <div className='row'>
                                     <button
-                                        className={userType == 'Patient' ? "col-md-6 toggle-switch toggle-switch-active" : "col-md-6 toggle-switch"}
+                                        className={userType === 'Patient' ? "col-md-6 toggle-switch toggle-switch-active" : "col-md-6 toggle-switch"}
                                         onClick={() => {setUserType('Patient')}}>
                                         Patient
                                 </button>
                                     <button
-                                        className={userType == 'Doctor' ? "col-md-6 toggle-switch toggle-switch-active" : "col-md-6 toggle-switch"}
+                                        className={userType === 'Doctor' ? "col-md-6 toggle-switch toggle-switch-active" : "col-md-6 toggle-switch"}
                                         onClick={() => {setUserType('Doctor')}}>
                                         Doctor
                                 </button>
@@ -70,7 +70,7 @@ const Login = ({ loginUser, loginDoctor, authInfo }) => {
                                     <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                                 </Form.Group>
                                 <Button className="login-btn" variant="primary" onClick={() => {
-                                    userType == 'Doctor' ? loginDoctor({ username, password }) : loginUser({ username, password })
+                                    userType === 'Doctor' ? loginDoctor({ username, password }) : loginUser({ username, password })
                                 }} style={{ marginTop: '1.5rem' }}>
                                     Login
                                 </Button>
@@ -78,7 +78,7 @@ const Login = ({ loginUser, loginDoctor, authInfo }) => {
                                 <Row>
                                     <Col>
                                         <Form.Group style={{ marginTop: '0.8rem' }}>
-                                            <div><a href="#" className="forgot-pwd">Forgot Password?</a></div>
+                                            <div><a href="/" className="forgot-pwd">Forgot Password?</a></div>
                                         </Form.Group>
                                     </Col>
                                     {/* <Col className='text-right'>

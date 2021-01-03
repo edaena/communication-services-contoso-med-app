@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route , Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import Login from "../pages/authentication/Login"
 import DashboardRoutes from "./dashboard.routes";
@@ -14,7 +14,7 @@ const PrimaryRoutes = ({ checkLogin, authInfo }) => {
         if (authInfo.loggedIn === undefined) checkLogin()
     })
 
-    return ((authInfo.loggedIn) ? (authInfo.userType == 'Patient' ? <Route><DashboardRoutes/></Route> : <Route><DoctorDashboardRoutes/></Route>) : <Route><Login/></Route>);
+    return ((authInfo.loggedIn) ? (authInfo.userType === 'Patient' ? <Route><DashboardRoutes/></Route> : <Route><DoctorDashboardRoutes/></Route>) : <Route><Login/></Route>);
 };
 
 const mapStateToProps = (globalState) => ({

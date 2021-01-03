@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
 import { getDoctorsStatsByCategory } from "../../data/actions/appointment.actions";
@@ -13,9 +13,11 @@ import "./PatientDashboard.scss";
 const PatientDashboard = ({ authInfo, getDoctorsStatsByCategory, docStats, lastVisitedDoctors }) => {
 
   useEffect(() => {
-    if (docStats == undefined) getDoctorsStatsByCategory();
-  })
-  let [visible, setVisible] = useState(false);
+    if (!docStats) getDoctorsStatsByCategory();
+  });
+
+  //let [visible, setVisible] = useState(false);
+
   return (
     <>
       <div className="background">
@@ -46,7 +48,7 @@ const PatientDashboard = ({ authInfo, getDoctorsStatsByCategory, docStats, lastV
           </div>
 
           <div className="profession-cards-div">
-            {docStats != undefined ? docStats.map((item, index) => {
+            {docStats ? docStats.map((item, index) => {
               return (
                 <ProfessionCard
                   name={item.name}

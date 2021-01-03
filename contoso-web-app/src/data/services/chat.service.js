@@ -21,7 +21,7 @@ export const getChatClient = () => {
         return chatClient
     }
     else {
-        let spoolID = localStorage.getItem(constants.KEY_SPOOL_ID)
+        //let spoolID = localStorage.getItem(constants.KEY_SPOOL_ID)
         let spoolToken = localStorage.getItem(constants.KEY_SPOOL_TOKEN)
 
         chatClient = new ChatClient(constants.acsEndpoint, new AzureCommunicationUserCredential(spoolToken))

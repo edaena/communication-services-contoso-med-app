@@ -9,7 +9,7 @@ const ChatBubble = ({ authInfo, currentBotThreadInfo, createBotThread, sendMessa
     // toggle chat bubble visibility
     const [visible, setVisible] = useState(false)
     useEffect(() => {
-        if (visible && currentBotThreadInfo === undefined) {
+        if (visible && !currentBotThreadInfo) {
             createBotThread(authInfo.email)
         }
     }, [visible])
@@ -79,6 +79,7 @@ const MessageDialog = ({ currentBotThreadInfo, sendMessage, messages, authInfo }
         <div className="chat-window">
             <div className="cw-header gradient">
                 <img
+                    alt=""
                     src="https://res.cloudinary.com/dtldj8hpa/image/upload/v1599465958/projects/AcsTeleMed/logo-icn.png"
                     className="icon-bubble"
                 />
@@ -135,7 +136,7 @@ const MessageList = ({ postMessage, messages, authInfo }) => {
                 formattedMessage = { sender: 'Doctor', text: message.content, interactive: false }
             }
         }
-        return (formattedMessage.sender == 'me') ?
+        return (formattedMessage.sender === 'me') ?
             myMessage(formattedMessage) :
             (formattedMessage.interactive === true) ?
                 interactiveMessage(formattedMessage)

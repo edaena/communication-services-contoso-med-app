@@ -1,16 +1,7 @@
-import React, { useEffect } from "react";
-import { Route, Redirect, Switch, useHistory } from "react-router-dom";
-
-import Header from "../shared/components/header/Header"
-import PatientDashboard from "../pages/dashboard/PatientDashboard";
-
-import DoctorList from "../pages/booking/DoctorList/DoctorList";
-import Booking from "../pages/booking/AppointmentBooking/Booking"
-import Appointments from "../pages/booking/Appointments/Appointments"
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import ChatDashboard from "../pages/chat/ChatDashboard"
-
 import NavItemsComponent from './navitems.component'
-
 import "./dashboard.routes.scss";
 
 export const NavItems = [

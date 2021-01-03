@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from 'react-router-dom'
 
 import { connect } from "react-redux";
@@ -8,10 +8,10 @@ import queryString from 'query-string';
 
 import {
   Container,
-  InputGroup,
-  Form,
-  Navbar,
-  FormControl,
+  //InputGroup,
+  //Form,
+  //Navbar,
+  //FormControl,
 } from "react-bootstrap";
 
 import AppBar from "../../../shared/components/appbar/appbar";
@@ -23,13 +23,13 @@ const DoctorList = ({docList, getDoctorsByCategory}) => {
 
   useEffect(() => {
     getDoctorsByCategory(category)
-  }, [category])
+  }, [getDoctorsByCategory, category])
 
   return (
     <>
       <AppBar title="Appointments" />
       <Container style={{ marginTop: "4rem" }}>
-        {docList != undefined ? docList.map((doctor) => (
+        {docList ? docList.map((doctor) => (
           <Doctor key={doctor.id} {...doctor} />
         )) : <div className='error error-box'>No doctors found</div>}
       </Container>

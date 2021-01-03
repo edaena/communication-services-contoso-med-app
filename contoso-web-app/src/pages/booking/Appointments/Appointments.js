@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "react-bootstrap";
 import BookedAppointment from "./BookedAppointment";
-import PastAppointment from "./PastAppointment";
+//import PastAppointment from "./PastAppointment";
 
 import AppBar from "../../../shared/components/appbar/appbar";
 

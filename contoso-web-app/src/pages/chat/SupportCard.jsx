@@ -1,7 +1,7 @@
 import React, { } from 'react';
 import './UserCard.css';
 
-import { constants } from "../../config";
+//import { constants } from "../../config";
 
 const SupportCard = ({ threadInfo, onClick, isSelected }) => {
     return (

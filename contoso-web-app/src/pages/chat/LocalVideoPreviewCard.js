@@ -1,7 +1,6 @@
 // © Microsoft Corporation. All rights reserved.
 
-import React, { Component } from "react";
-import { Card } from 'react-bootstrap';
+import React from "react";
 import { LocalVideoStream, Renderer } from '@azure/communication-calling';
 
 export default class LocalVideoPreviewCard extends React.Component {
@@ -15,7 +14,7 @@ export default class LocalVideoPreviewCard extends React.Component {
 
     async componentDidMount() {
         let cameraDevice = this.deviceManager.getCameraList()[0];
-        const target = document.getElementById('localVideoRenderer');
+        //const target = document.getElementById('localVideoRenderer');
         try {
             const localVideoStream = new LocalVideoStream(cameraDevice);
             this.renderer = new Renderer(localVideoStream);

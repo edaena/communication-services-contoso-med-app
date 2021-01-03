@@ -19,7 +19,7 @@ const Booking = ({ docDetails, getDoctorById, bookAppointment, bookingSuccess })
   var doctorId = queryString.parse(location.search).doctorId
 
   useEffect(() => {
-    if (docDetails == undefined)
+    if (!docDetails)
       getDoctorById(doctorId)
   });
 
@@ -40,7 +40,7 @@ const Booking = ({ docDetails, getDoctorById, bookAppointment, bookingSuccess })
       patientName: patientDetails.patientName,
       patientPhone: patientDetails.patientPhone,
       smsAlert: patientDetails.smsAlert,
-      slot: docDetails.slots.find(slot => slot.id == selectedSlotId)
+      slot: docDetails.slots.find(slot => slot.id === selectedSlotId)
     })
   };
 
@@ -142,7 +142,7 @@ const Booking = ({ docDetails, getDoctorById, bookAppointment, bookingSuccess })
                     <div className="time-slots-group">
                       {docDetails.slots.filter(slot => slot.startTime.split('T')[0] === selectedAppointmentDate).map(slot => (
                         <div
-                          className={slot.id == selectedSlotId ? "time-slot-option slot-selected" : slot.occupied ? "time-slot-option slot-occupied" : "time-slot-option"}
+                          className={slot.id === selectedSlotId ? "time-slot-option slot-selected" : slot.occupied ? "time-slot-option slot-occupied" : "time-slot-option"}
                           key={slot.id}
                           onClick={() => {if (!slot.occupied) setSelectedSlotId(slot.id)}}>
                           {new Date(slot.startTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
@@ -256,7 +256,7 @@ const Booking = ({ docDetails, getDoctorById, bookAppointment, bookingSuccess })
             </Card>
           </Card>
         </Col>
-        {selectedSlotId != "0" ? (<Col style={{ maxWidth: "400px" }}>
+        {selectedSlotId !== "0" ? (<Col style={{ maxWidth: "400px" }}>
           <Card className="doctor-card-right">
             <Row>
               <Col
@@ -286,7 +286,7 @@ const Booking = ({ docDetails, getDoctorById, bookAppointment, bookingSuccess })
                   <i className="far fa-calendar-alt text-secondary mr-1"></i>
                   <b>Date and Time</b>
                 </div>
-                <div className="info">{new Date(docDetails.slots.find(slot => slot.id == selectedSlotId).startTime).toLocaleString('en-US')}</div>
+                <div className="info">{new Date(docDetails.slots.find(slot => slot.id === selectedSlotId).startTime).toLocaleString('en-US')}</div>
               </div>
               <div className="consultation-mode-info text-secondary pl-2">
                 <div className="info-title">

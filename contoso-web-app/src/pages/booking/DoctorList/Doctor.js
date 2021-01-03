@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { constants } from "../../../config";
@@ -72,7 +72,7 @@ const Doctor = (props) => {
               <div className="text-secondary doctor-info-text">
                 <b>Next available slot: </b>
                 <div className="slot-time-text">
-                  <b>{props.slots != undefined && props.slots.length > 0 ? new Date(props.slots[0].startTime).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : "N/A"}</b>
+                  <b>{props.slots && props.slots.length > 0 ? new Date(props.slots[0].startTime).toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : "N/A"}</b>
                 </div>
               </div>
             </Row>

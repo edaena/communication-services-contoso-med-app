@@ -1,14 +1,14 @@
 ﻿// format: https://{website_url}/qnamaker/knowledgebases/{GUID}/generateAnswer
-const qnaMakerEndpoint = "QnA maker endpoint" 
+const qnaMakerEndpoint = process.env.QNA_MAKER_ENDPOINT
 
 // format: EndpointKey {GUID}
-const qnaMakerEndpointKey = "QnA maker endpoint key for authentication" 
+const qnaMakerEndpointKey = process.env.QNA_MAKER_KEY
 
 // format: https://{instance_name}.communication.azure.com
-const acsEndpoint = "Communication Service Endpoint" 
+const acsEndpoint = process.env.ACS_ENDPOINT
 
 // example: https://{deployment_url}.azurewebsites.net
-const apiEndpoint = "Contoso Med API endpoint"
+const apiEndpoint = process.env.API_ENDPOINT
 
 let { AzureCommunicationUserCredential } = require('@azure/communication-common')
 let { ChatClient } = require("@azure/communication-chat");

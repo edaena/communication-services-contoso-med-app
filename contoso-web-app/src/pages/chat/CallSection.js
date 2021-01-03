@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './CallSection.css';
 import StreamMedia from './StreamMedia';
-import { DefaultButton } from 'office-ui-fabric-react'
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Separator } from 'office-ui-fabric-react/lib/Separator';
 import LocalVideoPreviewCard from './LocalVideoPreviewCard';
@@ -19,7 +18,7 @@ class CallSection extends Component {
     }
 
     componentDidMount() {
-        this.state.deviceManager.getCameraList().map(cameraDevice => { this.state.cameraDeviceOptions.push({ key: cameraDevice.id, text: cameraDevice.name }) });
+        this.state.deviceManager.getCameraList().forEach(cameraDevice => { this.state.cameraDeviceOptions.push({ key: cameraDevice.id, text: cameraDevice.name }) });
     }
 
     async handleVideoOnOff() {

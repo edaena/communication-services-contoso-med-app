@@ -1,4 +1,4 @@
-import { loginAuthenticationAPI, loginDoctorAuthenticationAPI, signupAuthenticationAPI, 
+import { loginAuthenticationAPI, loginDoctorAuthenticationAPI, 
     checkLoginAPI, logoutUserAPI } from "../services/auth.service";
 
 export const CHECK_LOGIN = "CHECK_LOGIN"

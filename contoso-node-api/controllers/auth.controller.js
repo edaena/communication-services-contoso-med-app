@@ -13,7 +13,7 @@ const login = async (req, res) => {
     // find existing user
     var userIdentity = await userService.getUser(email, password)
 
-    if (userIdentity !== undefined) {
+    if (userIdentity) {
         var token = jwt.sign({ email: email, userType: 'Patient' }, config.jwtPrivateKey, { expiresIn: '1h' });
         
         let tokenResponse = await getTokenResponse(userIdentity)
@@ -41,7 +41,7 @@ const doctorLogin = async (req, res) => {
     // find existing user    
     var userIdentity = await userService.getDoctor(email, password)
 
-    if (userIdentity !== undefined) {
+    if (userIdentity) {
         var token = jwt.sign({ email: email, userType: 'Doctor' }, config.jwtPrivateKey, { expiresIn: '1h' });
         
         let tokenResponse = await getTokenResponse(userIdentity)
@@ -66,7 +66,7 @@ const getTokenResponse = async (userIdentity) => {
     // generate the spool id and token
     const identityClient = new CommunicationIdentityClient(config.connectionString)
     let tokenResponse = undefined;
-    if (userIdentity !== undefined && userIdentity.user !== undefined && userIdentity.user.communicationUserId != undefined && userIdentity.user.communicationUserId != "") {
+    if (userIdentity && userIdentity.user && userIdentity.user.communicationUserId) {
         console.log("just updating token as user already exists...");
         tokenResponse = await identityClient.issueToken({ communicationUserId: userIdentity.user.communicationUserId }, ["voip", "chat"])
     }

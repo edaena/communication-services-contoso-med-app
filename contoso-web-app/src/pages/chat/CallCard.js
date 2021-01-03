@@ -34,9 +34,9 @@ class CallCard extends Component {
             const speakerDevices = this.state.callClient.deviceManager.getSpeakerList();
             const microphoneDevices = this.state.callClient.deviceManager.getMicrophoneList();
 
-            cameraDevices.map(cameraDevice => { this.state.cameraDeviceOptions.push({ key: cameraDevice.id, text: cameraDevice.name }) });
-            speakerDevices.map(speakerDevice => { this.state.speakerDeviceOptions.push({ key: speakerDevice.id, text: speakerDevice.name }) });
-            microphoneDevices.map(microphoneDevice => { this.state.microphoneDeviceOptions.push({ key: microphoneDevice.id, text: microphoneDevice.name }) });
+            cameraDevices.forEach(cameraDevice => { this.state.cameraDeviceOptions.push({ key: cameraDevice.id, text: cameraDevice.name }) });
+            speakerDevices.forEach(speakerDevice => { this.state.speakerDeviceOptions.push({ key: speakerDevice.id, text: speakerDevice.name }) });
+            microphoneDevices.forEach(microphoneDevice => { this.state.microphoneDeviceOptions.push({ key: microphoneDevice.id, text: microphoneDevice.name }) });
 
             this.state.callClient.deviceManager.on('videoDevicesUpdated', e => {
                 e.added.forEach(cameraDevice => { this.state.cameraDeviceOptions.push({ key: cameraDevice.id, text: cameraDevice.name }); });

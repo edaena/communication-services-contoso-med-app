@@ -18,7 +18,7 @@ import BotChatArea from "./BotChatArea";
 
 const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, selectActiveBotThread, supportThreads }) => {
   useEffect(() => {
-    if (appointmentsList == undefined) getActiveAppointments();
+    if (!appointmentsList) getActiveAppointments();
   })
 
   const [selectedDoctor, setSelectedDoctor] = useState(undefined)
@@ -101,6 +101,7 @@ const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, sele
 
   const placeCall = async (selectedUser) => {
     try {
+      console.log("SELECTED USER - " + JSON.stringify(selectedUser))
       callAgent.call([{communicationUserId: selectedUser.spoolID}], getPlaceCallOptions());
     } catch (e) {
       console.log('Failed to place a call', e);
@@ -132,7 +133,7 @@ const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, sele
 
   return (
     <>
-      <AppBar title={authInfo.userType == 'Doctor' ? 'My Patients' : 'My Doctors'} />
+      <AppBar title={authInfo.userType === 'Doctor' ? 'My Patients' : 'My Doctors'} />
       {call ?
         (
           <CallCard call={call}
@@ -146,20 +147,20 @@ const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, sele
         (
           <div className="chat-screen">
             <div className="chat-user-list">
-              <div className="chat-user-list-header p-4">{authInfo.userType == 'Doctor' ? 'Patient' : 'Doctor'} List</div>
+              <div className="chat-user-list-header p-4">{authInfo.userType === 'Doctor' ? 'Patient' : 'Doctor'} List</div>
               <div className="chat-users">
-                {authInfo.userType == 'Patient' ? (appointmentsList != undefined && appointmentsList.length != 0) ? (
+                {authInfo.userType === 'Patient' ? (appointmentsList && appointmentsList.length !== 0) ? (
                   getDoctorsFromAppointments(appointmentsList).map(doctorEntry => {
-                    return (<UserCard key={doctorEntry.doctor.id} docInfo={doctorEntry.doctor} onClick={() => { setSelectedDoctor(doctorEntry.doctor) }} isSelected={selectedDoctor?.id == doctorEntry.doctor.id} />)
+                    return (<UserCard key={doctorEntry.doctor._id} docInfo={doctorEntry.doctor} onClick={() => { setSelectedDoctor(doctorEntry.doctor) }} isSelected={selectedDoctor?.id === doctorEntry.doctor.id} />)
                   })
                 ) : (
-                    <div className="text-center m-5">{authInfo.userType == 'Patient' ? 'Book an appointment get access to doctors' : 'No active patients'}</div>
-                  ) : (appointmentsList != undefined && appointmentsList.length != 0) ? (
+                    <div className="text-center m-5">{authInfo.userType === 'Patient' ? 'Book an appointment get access to doctors' : 'No active patients'}</div>
+                  ) : (appointmentsList && appointmentsList.length !== 0) ? (
                     getPatientsFromAppointments(appointmentsList).map(userEntry => {
-                      return (<UserCard key={userEntry.user.id} userInfo={userEntry.user} onClick={() => { setSelectedPatient(userEntry.user); setSelectedConversationType('Appointments'); }} isSelected={(selectedPatient?.id == userEntry.user.id) && (selectedConversationType == 'Appointments')} />)
+                      return (<UserCard key={userEntry.user._id} userInfo={userEntry.user} onClick={() => { setSelectedPatient(userEntry.user); setSelectedConversationType('Appointments'); }} isSelected={(selectedPatient?.id === userEntry.user.id) && (selectedConversationType === 'Appointments')} />)
                     })
                   ) : (
-                      <div className="text-center m-5">{authInfo.userType == 'Patient' ? 'Book an appointment get access to doctors' : 'No active patients'}</div>
+                      <div className="text-center m-5">{authInfo.userType === 'Patient' ? 'Book an appointment get access to doctors' : 'No active patients'}</div>
                     )}
               </div>
 
