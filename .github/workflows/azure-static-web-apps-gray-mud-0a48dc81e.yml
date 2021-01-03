@@ -28,8 +28,11 @@ jobs:
           # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
           app_location: "contoso-web-app" # App source code path
           app_artifact_location: "build"
+          app_build_command: "CI=false npm run build"
           # api_location: "." # Api source code path - optional
           ###### End of Repository/Build Configurations ######
+
+          --CI=false npm run build.
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
