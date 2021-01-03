@@ -66,9 +66,9 @@ const getTokenResponse = async (userIdentity) => {
     // generate the spool id and token
     const identityClient = new CommunicationIdentityClient(config.connectionString)
     let tokenResponse = undefined;
-    if (userIdentity && userIdentity.user && userIdentity.user.communicationUserId) {
+    if (userIdentity && userIdentity.spoolID) {
         console.log("just updating token as user already exists...");
-        tokenResponse = await identityClient.issueToken({ communicationUserId: userIdentity.user.communicationUserId }, ["voip", "chat"])
+        tokenResponse = await identityClient.issueToken({ communicationUserId: userIdentity.spoolID }, ["voip", "chat"])
     }
     else {
         let userResponse = await identityClient.createUser();

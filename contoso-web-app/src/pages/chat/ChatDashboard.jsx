@@ -44,8 +44,7 @@ const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, sele
       let devcManager = await callClient.getDeviceManager();
       setDeviceManager(devcManager);
       clAgent.on('callsUpdated', e => {
-        console.log("Call init");
-        console.log(e);
+        console.log("Call init " + e);
 
         e.added.forEach(call => {
           console.log(typeof call)
@@ -73,7 +72,7 @@ const ChatDashboard = ({ authInfo, appointmentsList, getActiveAppointments, sele
       // failure might be because of pre-existing call client object
       // refresh the page
       
-      //window.location.reload()
+      window.location.reload()
     }
   }
 
