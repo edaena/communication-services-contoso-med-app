@@ -3,7 +3,7 @@ const spoolService = require('../services/spool.service')
 const config = require("../config");
 
 if (!config || !config.connectionString || config.connectionString.indexOf('endpoint=') === -1) {
-    throw new Error("Set the 'COSMOS_MONGO_CONNECTION_STRING' environment variable");
+    throw new Error("Set the 'ACS_CONNECTION_STRING' environment variable");
 }
 
 const getAllDoctors = async (req, res) => {
